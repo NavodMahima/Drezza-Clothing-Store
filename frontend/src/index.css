@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+a.active hr{
+    display: block;
+}
+.nav a.active p{
+    color: #69111D;
+    font-weight: bold;
+}
