@@ -7,14 +7,6 @@ const ProductItem = ({id,image,name,price}) => {
 
     const {currency} = useContext(ShopContext);
 
-  //   const defaultImageUrl = '/assets/assets/cross_icon.png'; 
-  //   const getDisplayImage = () => {
-  //     if (Array.isArray(image) && image.length > 0) {
-  //         return image[0];
-  //     }
-  //     return defaultImageUrl;
-  // };
-
   return (
     <Link className='text-gray-700 cursor-pointer' to={`/product/${id}`}>
         <div className='overflow-hidden'>
