@@ -2,10 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ShopContext } from '../context/shopContext';
 import { assets } from '/assets/assets';
+import RelatedProduts from '../components/RelatedProduts';
 
 const Product = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
   const [size, setSize] = useState() // State for selected size
@@ -71,7 +72,7 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button className='bg-black text-white px-7 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+          <button onClick={()=>addToCart(productData._id,size)} className='bg-black text-white px-7 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
           <hr className='mt-8 sm:w-4/5'/>
           <div className='text-sm text-gray-500 mt-5 flex-flex-col gap-1'>
               <p>100% Original.</p>
@@ -95,7 +96,7 @@ const Product = () => {
 
       {/* Display related Produts */}
 
-
+      <RelatedProduts category={productData.category} subCategory={productData.subCategory} />
 
     </div>
   ) : (
