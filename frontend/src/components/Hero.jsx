@@ -1,5 +1,6 @@
 import React from 'react'
 import { assets } from '/assets/assets'
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -12,11 +13,19 @@ const Hero = () => {
               <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
               <p className='font-medium text-lg md:text-xl'>Our Best Seller</p> 
           </div>
+
           <h1 className='text-5xl sm:py-3 lg:text-7xl leading-relaxed'>Latest Arrivals</h1> 
           <div className='flex items-center gap-2'>
               <p className='font-semibold text-lg md:text-xl'>Shop Now</p> 
               <p className='font-medium text-lg md:text-xl bg-[#414141]'></p>
           </div>
+
+          <motion.div
+            className="box"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          />
         </div>
 
       </div>
