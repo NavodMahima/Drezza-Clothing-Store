@@ -1,6 +1,5 @@
 import React from 'react'
 import { assets } from '/assets/assets'
-import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -8,9 +7,9 @@ const Hero = () => {
       {/* Hero left side */}
       <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
         
-        <div className='mr-0 text-[#414141]'>
+        <div className='mr-0 text-black'>
           <div className='flex items-center gap-2'>
-              <p className='w-8 md:w-11 h-[2px] bg-[#414141]'></p>
+              <p className='w-8 md:w-11 h-[2px] bg-black'></p>
               <p className='font-medium text-lg md:text-xl'>Our Best Seller</p> 
           </div>
 
@@ -20,12 +19,12 @@ const Hero = () => {
               <p className='font-medium text-lg md:text-xl bg-[#414141]'></p>
           </div>
 
-          <motion.div
-            className="box"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          />
+          <div>
+          <button className='border border-black rounded-full mt-10 px-8 py-4 text-md font-semibold hover:bg-black hover:text-white transition duration-300'>
+           Buy Now
+          </button>
+          </div>
+
         </div>
 
       </div>
