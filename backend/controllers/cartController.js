@@ -8,7 +8,7 @@ const addToCart =async (req, res) => {
 
         const userData = await userModel.findById(userId)
 
-        if (!userId || !productId) {
+        if (!userId || !itemId) {
             return res.status(400).json({
                 success: false,
                 message: "Please Login to the account"
