@@ -7,7 +7,7 @@ import { assets } from '../assets/assets'
 const Orders = ({ token }) => {
 
   const [orders, setOrders] = useState([])
-  
+
   const fetchAllOrders = async () => {
 
     if (!token) {
@@ -17,7 +17,7 @@ const Orders = ({ token }) => {
     try {
       const response = await axios.post(backendUrl + '/api/order/list', {}, { headers: { token } })
       if (response.data.success) {
-        setOrders(response.data.orders.reverse)
+        setOrders(response.data.orders.reverse())
       } else {
         toast.error(response.data.message)
       }
@@ -27,10 +27,10 @@ const Orders = ({ token }) => {
 
   }
 
-  const statusHandler = async(event,orderId) =>{
+  const statusHandler = async (event, orderId) => {
     try {
-      const response = await axios.post(backendUrl + '/api/order/status',{orderId, status: event.target.value},{headers:{token}});
-      if (response.data.success){
+      const response = await axios.post(backendUrl + '/api/order/status', { orderId, status: event.target.value }, { headers: { token } });
+      if (response.data.success) {
         await fetchAllOrders()
       }
       else {
@@ -40,7 +40,7 @@ const Orders = ({ token }) => {
       console.log(error)
       // toast.error(response.data.message)
       toast.error(error.response?.data?.message || 'Failed to update order status');
-      
+
     }
   }
 
@@ -59,10 +59,12 @@ const Orders = ({ token }) => {
               <div>
                 <div>
                   {order.items.map((item, index) => {
-                    if (index === order.items.length - 1){}
+                    if (index === order.items.length - 1) {
                       return <p className='py-0.5' key={index}>{item.name} X {item.quantity} <span>{item.size}</span></p>
-                  }
-                  )}
+                    } else {
+                      return <p className='py-0.5' key={index}>{item.name} X {item.quantity} <span>{item.size}</span></p>
+                    }
+                  })}
                 </div>
                 <p className='mt-3 mb-2 font-bold'>{order.address.firstname + " " + order.address.lastname}</p>
                 <div>
@@ -78,7 +80,7 @@ const Orders = ({ token }) => {
                 <p>Date : {new Date(order.date).toLocaleDateString()}</p>
               </div>
               <p className='text-sm sm:text-[15px]'>{currency}{order.amount}</p>
-              <select onChange={(event)=>statusHandler(event,order._id)} value={order.status} className='p-2 font-semibold'>
+              <select onChange={(event) => statusHandler(event, order._id)} value={order.status} className='p-2 font-semibold'>
                 <option value="Order Placed">Order Placed</option>
                 <option value="Packing">Packing</option>
                 <option value="Shipped">Shipped</option>
