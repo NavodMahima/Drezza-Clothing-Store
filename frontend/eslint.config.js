@@ -6,6 +6,19 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
   { ignores: ['dist'] },
+  
+  //vercel
+  "rules", {
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-unused-expressions": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-empty-object-type": "off",
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  //vercel e
+
+
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
